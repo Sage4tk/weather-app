@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #7BAFCF;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info-bar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 500px;
+    padding: 4rem 3rem;
+    background-color: rgba(0, 0, 0, 0.200);
+    color: white;
+}
+
+.form-control {
+    font-size: 2rem;
+}
+
+input {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: solid rgb(177, 177, 177) 2px;
+    font-size: 2rem;
+    color: white;
+    width: 90%;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: rgb(177, 177, 177);
+}
+
+.search {
+    height: auto;
+    width: 2.4rem;
+    position: absolute;
+    cursor: pointer;
+}
