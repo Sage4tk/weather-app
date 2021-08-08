@@ -3,7 +3,13 @@ import React, { useState } from "react"
 //icons
 import search from "../svg/search.svg"
 
-export default function Info({ setWeather }) {
+export default function Info({ setWeather, toggle, setToggle }) {
+    //conver metric system
+    
+    const toggler = () => {
+        setToggle(!toggle);
+    }
+
 
     const [formHandler, setForm] = useState({
         city: ""
@@ -32,9 +38,13 @@ export default function Info({ setWeather }) {
             <form onSubmit={submit}>
                 <div className="form-control">
                     <input type="text" placeholder="Type your city" name="city" onChange={changeHandler} value={formHandler.city} />
-                    <img src={search} className="search"></img>
+                    <button type="submit"><img src={search} className="search"></img></button>
                 </div>
             </form>
+            <div className="switch" onClick={toggler}>
+                <input type="checkbox" checked={toggle} readOnly={true}/>
+                <span className="slider round"></span>
+            </div>
         </div>
     )
 }
