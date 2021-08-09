@@ -11,16 +11,19 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [toggle, setToggle] = useState(false);
 
+  const test = () => {
+    if (toggle) return parseInt(weather.main.temp - 273.15)
+    return parseInt(weather.main.temp * 1.8 -459.67)
+  }
+
   const weatherCard = () => {
     if (!weather) return (null) 
     return (
       <div>
-        <h2>{parseInt(weather.main.temp - 273.15)}</h2>+
+        <h2>{test()}</h2>
       </div>
     )
   }
-
-
 
   return (
     <>
