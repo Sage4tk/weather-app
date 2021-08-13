@@ -3,7 +3,10 @@ import React, { useState } from "react"
 //icons
 import search from "../svg/search.svg"
 
-export default function Info({ setWeather, toggle, setToggle }) {
+//components
+import List  from "./List";
+
+export default function Info({ weather, setWeather, toggle, setToggle }) {
     //conver metric system
     
     const toggler = () => {
@@ -22,6 +25,7 @@ export default function Info({ setWeather, toggle, setToggle }) {
             const data = await res.json();
             console.log(data.main.temp);
             setWeather(data)
+            setForm({city: ""});
         } catch (err) {
             console.log(err)
         }
@@ -41,10 +45,11 @@ export default function Info({ setWeather, toggle, setToggle }) {
                     <button type="submit"><img src={search} className="search"></img></button>
                 </div>
             </form>
-            <div className="switch" onClick={toggler}>
+            {/* <div className="switch" onClick={toggler}>
                 <input type="checkbox" checked={toggle} readOnly={true}/>
                 <span className="slider round"></span>
-            </div>
+            </div> */}
+            <List weather={weather} toggle={toggle} />
         </div>
     )
 }

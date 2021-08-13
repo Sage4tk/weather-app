@@ -22,15 +22,17 @@ function App() {
   const [toggle, setToggle] = useState(false);
 
   const test = () => {
-    if (toggle) return parseInt(weather.main.temp * 1.8 -459.67)
-    return parseInt(weather.main.temp - 273.15)
+    if (toggle) return parseInt(weather.main.temp * 1.8 -459.67) + " °F"
+    return parseInt(weather.main.temp - 273.15) + " °C"
   }
 
   const weatherCard = () => {
     if (!weather) return (null) 
     return (
       <div>
-        <h2>{test()}</h2>
+        <h2>{test()} </h2>
+        <p>{weather.weather[0].description}</p>
+        <h3>{weather.name}</h3>
       </div>
     )
   }
@@ -41,7 +43,7 @@ function App() {
         <h1>Weather App</h1>
         {weatherCard()}
       </div>
-      <Info setWeather={setWeather} toggle={toggle} setToggle={setToggle} />
+      <Info weather={weather} setWeather={setWeather} toggle={toggle} setToggle={setToggle} />
     </>
   );
 }
