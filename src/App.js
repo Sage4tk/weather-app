@@ -6,6 +6,9 @@ import Info from './components/Info';
 
 //img
 import clear from "./svg/clear.svg";
+import clouds from "./svg/clouds.svg"
+import rain from "./svg/rain.svg"
+import snow from "./svg/snow.svg"
 
 function App() {
 
@@ -21,18 +24,34 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [toggle, setToggle] = useState(false);
 
-  const test = () => {
+  //metric switcher
+  const minmax = () => {
     if (toggle) return parseInt(weather.main.temp * 1.8 -459.67) + " °F"
     return parseInt(weather.main.temp - 273.15) + " °C"
+  }
+
+  //weather icon
+  const iconChanger = (str) => {
+    switch(str) {
+      case "Clouds":
+        return clouds
+      case "Rain": case "Drizzle": case "Thunderstorm":
+        return rain
+      case "Snow":
+        return snow
+      default:
+        return clear
+    }
   }
 
   const weatherCard = () => {
     if (!weather) return (null) 
     return (
       <div>
-        <h2>{test()} </h2>
+        <h2>{weather.name}</h2>
+        <img src={iconChanger(weather.weather[0].main)}></img>
         <p>{weather.weather[0].description}</p>
-        <h3>{weather.name}</h3>
+        <h3>{minmax()}</h3>
       </div>
     )
   }
