@@ -117,3 +117,36 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.left-side {
+    color: white;
+}
+
+.left-side_display {
+    position: absolute;
+    bottom: 25%;
+    left: 8%;
+    display: flex;
+    align-items: center;
+}
+
+.left-side_display > * {
+    margin-right: 2rem;
+}
+
+.temp {
+    font-size: 4rem;
+}
+
+.display_icon {
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.display_icon img {
+    width: 100px;
+    height: auto;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+}

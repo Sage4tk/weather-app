@@ -26,8 +26,8 @@ function App() {
 
   //metric switcher
   const minmax = () => {
-    if (toggle) return parseInt(weather.main.temp * 1.8 -459.67) + " °F"
-    return parseInt(weather.main.temp - 273.15) + " °C"
+    if (toggle) return parseInt(weather.main.temp * 1.8 -459.67) + "°F"
+    return parseInt(weather.main.temp - 273.15) + "°C"
   }
 
   //weather icon
@@ -44,14 +44,25 @@ function App() {
     }
   }
 
+  //get local time
+  const timeZone = () => {
+    const getTime = new Date((weather.sys.sunrise + weather.timezone) * 1000);
+    return getTime.toLocaleTimeString();
+  }
+
   const weatherCard = () => {
-    if (!weather) return (null) 
+    if (!weather) return (null)
     return (
-      <div>
-        <h2>{weather.name}</h2>
-        <img src={iconChanger(weather.weather[0].main)}></img>
-        <p>{weather.weather[0].description}</p>
-        <h3>{minmax()}</h3>
+      <div className="left-side_display">
+        <p className="temp">{minmax()}</p>
+        <div className="display_icon">
+          <img src={iconChanger(weather.weather[0].main)}></img>
+          <p>{weather.weather[0].description}</p>
+        </div>
+        <div>
+          <p>{weather.name}</p>
+          <p>{timeZone()}</p>
+        </div>
       </div>
     )
   }
