@@ -10,6 +10,9 @@ import clouds from "./svg/clouds.svg"
 import rain from "./svg/rain.svg"
 import snow from "./svg/snow.svg"
 
+//context
+import { ThemeProvider} from './ThemeContext';
+
 function App() {
 
   //ask for coords
@@ -46,8 +49,8 @@ function App() {
 
   //get local time
   const timeZone = () => {
-    const getTime = new Date((weather.sys.sunrise + weather.timezone) * 1000);
-    return getTime.toLocaleTimeString();
+    const getTime = new Date();
+    return getTime.toLocaleDateString();
   }
 
   const weatherCard = () => {
@@ -68,13 +71,13 @@ function App() {
   }
 
   return (
-    <>
+    <ThemeProvider>
       <div className="left-side">
         <h1>Weather App</h1>
         {weatherCard()}
       </div>
       <Info weather={weather} setWeather={setWeather} toggle={toggle} setToggle={setToggle} />
-    </>
+    </ThemeProvider>
   );
 }
 

@@ -1,11 +1,20 @@
-import React from "react";
+import React from 'react';
+import { useTheme, useThemeUpdate } from '../ThemeContext';
 
 export default function List({ weather, toggle }) {
+    const theme = useTheme()
+    const toggleTheme = useThemeUpdate();
+
     if (!weather) return (null)
     
     const minmax = (num) => {
         if (toggle) return parseInt(num * 1.8 -459.67) + " °F"
         return parseInt(num - 273.15) + " °C"
+    }
+
+    const test = () => {
+        toggleTheme();
+        console.log(theme);
     }
 
     return (
@@ -15,6 +24,7 @@ export default function List({ weather, toggle }) {
             <p>Minimum Temperature: {minmax(weather.main.temp_min)}</p>
             <p>Maximum Temperature: {minmax(weather.main.temp_max)}</p>
             <p>Humidity: {weather.main.humidity}</p>
+            <button onClick={test}> test</button>
         </div>
     )
 }
