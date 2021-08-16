@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useTheme, useThemeUpdate } from "../ThemeContext";
 
 //icons
@@ -19,15 +19,33 @@ export default function Info({ weather, setWeather, toggle, setToggle }) {
     //conver metric system
     const toggler = () => {
         setToggle(!toggle);
+        localStorage.setItem('units', !toggle);
     }
 
     //dark theme toggler
+    
     const [darkTheme, setDarkTheme] = useState(false)
 
     const toggleDark = () => {
         setDarkTheme(!darkTheme);
+        localStorage.setItem('dark', !darkTheme);
         setTheme();
     }
+
+    //checks if previous settings
+    useEffect(() => {
+        const themeBool = localStorage.getItem('dark');
+        const unitBool = localStorage.getItem('units');
+        if (themeBool === "true") {
+            setTheme();
+            setDarkTheme(!darkTheme)
+        }
+
+        if (unitBool === "true") {
+            setToggle(true);
+        }
+    }, [])
+
 
     //form handler
     const [formHandler, setForm] = useState({
