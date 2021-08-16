@@ -11,10 +11,16 @@ import rain from "./svg/rain.svg"
 import snow from "./svg/snow.svg"
 
 //context
-import { ThemeProvider} from './ThemeContext';
+import { useTheme } from './ThemeContext';
 
 function App() {
+  //theme
+  const themeAge = useTheme();
 
+  //inline css
+  const mainStyle = {
+    backgroundColor: themeAge ? "#1f1f1f" : "#7BAFCF"
+  }
   //ask for coords
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -59,10 +65,10 @@ function App() {
       <div className="left-side_display">
         <p className="temp">{minmax()}</p>
         <div className="display_icon">
-          <img src={iconChanger(weather.weather[0].main)}></img>
+          <img src={iconChanger(weather.weather[0].main)} alt="weather icon"></img>
           <p>{weather.weather[0].description}</p>
         </div>
-        <div>
+        <div className="country">
           <p>{weather.name}</p>
           <p>{timeZone()}</p>
         </div>
@@ -71,13 +77,13 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-      <div className="left-side">
+    <>
+      <div className="left-side" style={mainStyle}>
         <h1>Weather App</h1>
         {weatherCard()}
       </div>
       <Info weather={weather} setWeather={setWeather} toggle={toggle} setToggle={setToggle} />
-    </ThemeProvider>
+    </>
   );
 }
 

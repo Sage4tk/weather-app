@@ -1,9 +1,6 @@
 import React from 'react';
-import { useTheme, useThemeUpdate } from '../ThemeContext';
 
 export default function List({ weather, toggle }) {
-    const theme = useTheme()
-    const toggleTheme = useThemeUpdate();
 
     if (!weather) return (null)
     
@@ -12,19 +9,23 @@ export default function List({ weather, toggle }) {
         return parseInt(num - 273.15) + " °C"
     }
 
-    const test = () => {
-        toggleTheme();
-        console.log(theme);
+    const windSpeed = (num) => {
+        const kmh = num * 3.6;
+        if (toggle) return (kmh / 1.609).toFixed(2) + " MPH";
+        return kmh.toFixed(2) + " KM/H";
     }
 
     return (
         <div className="info-bar_inside">
             <p>Latitude: {weather.coord.lat.toFixed(2)}</p>
             <p>Longitude: {weather.coord.lon.toFixed(2)}</p>
+            <hr />
             <p>Minimum Temperature: {minmax(weather.main.temp_min)}</p>
             <p>Maximum Temperature: {minmax(weather.main.temp_max)}</p>
-            <p>Humidity: {weather.main.humidity}</p>
-            <button onClick={test}> test</button>
+            <hr />
+            <p>Humidity: {weather.main.humidity}%</p>
+            <p>Wind Speed: {windSpeed(weather.wind.speed)}</p>
+            <hr/>
         </div>
     )
 }
