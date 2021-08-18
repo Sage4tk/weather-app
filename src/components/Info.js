@@ -32,7 +32,7 @@ export default function Info({ weather, setWeather, toggle, setToggle }) {
         setTheme();
     }
 
-    //checks if previous settings
+    //checks if previous settingsn
     useEffect(() => {
         const themeBool = localStorage.getItem('dark');
         const unitBool = localStorage.getItem('units');

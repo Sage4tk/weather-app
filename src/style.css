@@ -17,13 +17,13 @@ body {
     height: 100vh;
     width: 500px;
     padding: 4rem 3rem;
-    color: white;
-    transition: 1s;
+    transition: background-color 1s;
+    color: #e9e9e9;
 }
 
 .info-bar_inside {
     font-size: 1.2rem;
-    color: #e9e9e9;
+
 }
 
 .info-bar_inside hr {
@@ -136,8 +136,7 @@ input:checked + .slider:before {
 .left-side {
     color: white;
     height: 100vh;
-    transition: 2s;
-    
+    transition: background-color 2s;
 }
 
 .left-side_display {
@@ -154,6 +153,7 @@ input:checked + .slider:before {
 
 .temp {
     font-size: 5rem;
+    font-family: 'Lato', sans-serif;
 }
 
 .display_icon {
@@ -177,8 +177,14 @@ input:checked + .slider:before {
     display: flex;
     margin-bottom: 2.4rem;
     font-size: 1.2rem;
+
 }
 
 .switch-controller > *:first-child{
     margin-right: 1rem;
+}
+
+h1 {
+    padding: 2rem;
+    font-family: 'Lato', sans-serif;
 }
