@@ -7,13 +7,13 @@ import search from "../svg/search.svg"
 //components
 import List  from "./List";
 
-export default function Info({ weather, setWeather, toggle, setToggle }) {
+export default function Info({ weather, setWeather, toggle, setToggle, showList }) {
     //theme converter
     const theme = useTheme();
     const setTheme = useThemeUpdate();
 
     const infoStyle = {
-        backgroundColor: theme ? "#0f0f0f":"rgba(0, 0, 0, 0.200)"
+        backgroundColor: theme ? "#0f0f0f":"#628CA6"
     }
 
     //conver metric system
@@ -72,7 +72,7 @@ export default function Info({ weather, setWeather, toggle, setToggle }) {
     }
 
     return (
-        <div className="info-bar" style={infoStyle}>
+        <div className={showList? "info-bar show":"info-bar"} style={infoStyle}>
             <form onSubmit={submit}>
                 <div className="form-control">
                     <input type="text" placeholder="Type your city" name="city" onChange={changeHandler} value={formHandler.city} />

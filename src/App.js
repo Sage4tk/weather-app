@@ -17,6 +17,9 @@ function App() {
   //theme
   const themeAge = useTheme();
 
+  //list state for responsiveness
+  const [showList, setShowList] = useState(false);
+
   //inline css
   const mainStyle = {
     backgroundColor: themeAge ? "#1f1f1f" : "#7BAFCF"
@@ -80,9 +83,14 @@ function App() {
     <>
       <div className="left-side" style={mainStyle}>
         <h1>Weather App</h1>
+        <div className="burger" onClick={() => setShowList(!showList)}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         {weatherCard()}
       </div>
-      <Info weather={weather} setWeather={setWeather} toggle={toggle} setToggle={setToggle} />
+      <Info weather={weather} setWeather={setWeather} toggle={toggle} setToggle={setToggle} showList={showList} />
     </>
   );
 }

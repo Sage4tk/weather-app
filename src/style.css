@@ -10,6 +10,15 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html, body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+#root {
+    overflow-x: hidden;
+}
+
 .info-bar {
     position: fixed;
     right: 0;
@@ -187,4 +196,59 @@ input:checked + .slider:before {
 h1 {
     padding: 2rem;
     font-family: 'Lato', sans-serif;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 34px;
+    height: 6px;
+    background-color: #e9e9e9;
+    transition: 0.5s;
+}
+
+.burger div:not(:last-child) {
+    margin-bottom: 6px;
+}
+
+@media only screen and (max-width: 768px) {
+    .info-bar {
+        transform: translateX(100vh);
+        transition: 1s;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .left-side_display {
+        flex-direction: column;
+        left: 28%;
+    }
+
+    .left-side_display > *:not(:last-child) {
+        margin-bottom: 1.4rem;
+    }
+
+    .burger {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 82%;
+        top: 3.5%;
+        z-index: 1;
+    }
+
+    .burger:hover > div {
+        background-color: white;
+    }
+
+    h1 {
+        padding: 1rem 0 0 3rem;
+    }
+
+    .show {
+        transform: translateX(0);
+    }
 }
