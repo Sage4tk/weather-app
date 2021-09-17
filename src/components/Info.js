@@ -55,7 +55,7 @@ export default function Info({ weather, setWeather, toggle, setToggle, showList 
     const submit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`http://localhost:4000/api/weather?city=${formHandler.city}`);
+            const res = await fetch(`https://zackpersonalapi.herokuapp.com/api/weather?city=${formHandler.city}`);
             const data = await res.json();
             console.log(data.main.temp);
             setWeather(data)

@@ -27,7 +27,7 @@ function App() {
   //ask for coords
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
-      fetch(`http://localhost:4000/api/weather?lat=${parseInt(pos.coords.latitude)}&lon=${parseInt(pos.coords.longitude)}`)
+      fetch(`https://zackpersonalapi.herokuapp.com/api/weather?lat=${parseInt(pos.coords.latitude)}&lon=${parseInt(pos.coords.longitude)}`)
       .then((res) => res.json())
       .then((data) => setWeather(data));
     })
